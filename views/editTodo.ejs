@@ -1,0 +1,34 @@
+<%- include('partials/header')%>
+<%- include('partials/nav')%>
+
+<body>
+
+    <div class="container">
+        <h1 class="text-center">Edit ToDo</h1>
+        <div class="d-flex justify-content-center">
+            <form class="w-50" action="/todo/<%= findItem._id%>?_method=PUT" method="post">
+                <div class="form-group">
+                    <label for="name">Name todo</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Type todo" value="<%= findItem.name%>">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" id="category" name="category">
+                        <% for (let category of categories) { %>
+                            <option value="<%= category%>" <%= findItem.category === category ? 'selected' : ''%>><%= category%></option>
+                        <%}%>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="describe">Description</label>
+                    <textarea name="description" class="form-control" id="describe" rows="3" placeholder="Describe todo">
+                        <%= findItem.description%>
+                    </textarea>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+                <a href="/todo/<%= findItem._id%>" class=" btn btn-danger">Cancel</a>
+                <a href="/todo" class="btn btn-info">Back to List</a>
+            </form>
+</body>
+</html>

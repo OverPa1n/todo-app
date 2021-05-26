@@ -1,0 +1,24 @@
+<%- include('partials/header')%>
+<%- include('partials/nav')%>
+<body>
+
+<div class="container">
+    <h1 class="text-center">Completed Todo List</h1>
+    <div class="d-flex justify-content-center">
+        <ol class="list-group list-group-numbered w-50">
+            <% for (let item of doneTodo) {%>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div><b><%= item.name%></b></div>
+                    </div>
+                    <a href="/todo/<%=item._id%>" class="btn btn-success">Show more</a>
+                </li>
+
+
+            <%}%>
+        </ol>
+    </div>
+</div>
+</body>
+</html>
