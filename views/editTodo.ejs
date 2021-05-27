@@ -22,9 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="describe">Description</label>
-                    <textarea name="description" class="form-control" id="describe" rows="3" placeholder="Describe todo">
-                        <%= findItem.description%>
-                    </textarea>
+                    <textarea name="description" class="form-control" id="describe" rows="3" placeholder="Describe todo"><%= findItem.description%></textarea>
                 </div>
                 <button class="btn btn-primary">Submit</button>
                 <a href="/todo/<%= findItem._id%>" class=" btn btn-danger">Cancel</a>

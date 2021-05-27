@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
     if (err.message && (isNotFound || isCastError)) {
         return next()
     }
-    res.status(500).json({error: err.message})
+    res.status(500).send(err.message)
 })
 
 app.use((req, res) => {
@@ -41,3 +41,5 @@ app.use((req, res) => {
 app.listen(3000, () => {
     console.log('LISTENING ON 3000')
 })
+
+module.exports = app;

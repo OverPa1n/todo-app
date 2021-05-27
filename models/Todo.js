@@ -9,7 +9,6 @@ const todoSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        trim: true,
         required: false
     },
     category: {

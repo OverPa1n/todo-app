@@ -12,7 +12,7 @@
                     </h5>
 
                     <hr>
-                    <p class="card-text"><%= findItem.description%></p>
+                    <p class="card-text" style="width: 350px;"><%= findItem.description%></p>
                     <div class="d-flex justify-content-between">
                         <a href="/todo/<%= findItem._id%>/edit" class="btn btn-success">Edit</a>
                         <form action="/todo/<%=findItem._id%>?_method=DELETE" method="post" style="margin: 0 5px;">

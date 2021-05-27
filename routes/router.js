@@ -7,6 +7,7 @@ const categories = ['important', 'unimportant'];
 router.get('/todo', async (req, res, next) => {
     try {
         const listTodo = await Todo.find({});
+        console.log(listTodo)
         res.render('index', {listTodo})
     } catch (e) {
         next(e)
