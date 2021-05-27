@@ -50,45 +50,4 @@ router.get('/todo/:id/edit', async (req, res, next) => {
 
 })
 
-router.post('/todo', async (req, res) => {
-    const {error} = JoiSchema(req.body)
-    if (error) {
-        console.log(error)
-        return res.status(400).send(error.details[0].message)
-    }
-    const newTodo = new Todo(req.body);
-    await newTodo.save()
-    res.redirect('/todo')
-})
-
-router.post('/todo/:id/completed', async (req, res) => {
-
-    const {id} = req.params;
-    await Todo.findById(id).exec()
-        .then(result => {
-            result.done = !result.done
-            return result.save()
-        }).then(result => {
-            res.redirect('/todo/completed')
-        })
-
-})
-router.delete('/todo/:id', async (req, res) => {
-    const {id} = req.params;
-    const deletedItem = await Todo.findByIdAndDelete(id);
-    res.redirect('/todo/completed')
-
-})
-router.put('/todo/:id', async (req, res) => {
-    const {error} = JoiSchema(req.body)
-    if (error) {
-        console.log(error)
-        return res.status(400).send(error.details[0].message)
-    }
-    const {id} = req.params;
-    const updateItem = await Todo.findByIdAndUpdate(id, req.body, {runValidators: true, new: true});
-    res.redirect(`/todo/${updateItem._id}`)
-})
-
-
-module.exports = router;
+module.exports = router

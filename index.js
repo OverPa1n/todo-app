@@ -2,40 +2,45 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
-const mongoose = require('mongoose');
-const Todo = require('./models/Todo');
-const router = require("./routes/router");
+const connectToDB = require('./models/connect')
+const get = require('./routes/get')
+const post = require('./routes/post')
+const deleteMethod = require('./routes/delete')
+const updateMethod = require('./routes/update')
 
-mongoose.connect('mongodb://localhost:27017/todosApp', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-    .then(() => {
-        console.log('MONGO CONNECTION')
-    }).catch((err) => console.log('OHH NO ERROR', err))
-
+connectToDB()
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 
-app.get("/", (req, res, next) => {
+
+
+app.use('/', get)
+app.use('/', post)
+app.use('/', deleteMethod)
+app.use('/', updateMethod)
+
+
+app.all("*", (req, res, next) => {
     throw new Error("Check your routes!");
 });
-
-app.use('/', router)
-
 app.use((err, req, res, next) => {
     const isNotFound = ~err.message.indexOf('not found')
     const isCastError = ~err.message.indexOf('Cast to ObjectId failed')
+    const isDuplicate = ~err.message.indexOf('duplicate key error collection')
+    const fieldRequired = ~err.message.indexOf('Todo validation failed')
+
     if (err.message && (isNotFound || isCastError)) {
-        return next()
+        res.status(404).render('error', {err})
     }
-    res.status(500).send(err.message)
+    if(err.message && (isDuplicate|| fieldRequired)){
+        res.status(412).render('error',{err})
+    }
+    res.status(500).render('error', {err})
 })
 
-app.use((req, res) => {
-    res.sendStatus(404)
-
-})
 
 
 app.listen(3000, () => {
