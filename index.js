@@ -33,12 +33,12 @@ app.use((err, req, res, next) => {
     const fieldRequired = ~err.message.indexOf('Todo validation failed')
 
     if (err.message && (isNotFound || isCastError)) {
-        res.status(404).render('error', {err})
+       return res.status(404).render('error', {err})
     }
     if(err.message && (isDuplicate|| fieldRequired)){
-        res.status(412).render('error',{err})
+       return res.status(412).render('error',{err})
     }
-    res.status(500).render('error', {err})
+   return res.status(500).render('error', {err})
 })
 
 

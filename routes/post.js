@@ -5,18 +5,20 @@ const JoiSchema = require('../validators/JoiSchema')
 const categories = ['important', 'unimportant'];
 
 router.post('/todo', async (req, res,next) => {
+    try{
     const {err} = JoiSchema(req.body)
+
     if (err) {
         console.log(err)
         return res.render('error',{err})
     }
-    try {
+
         const newTodo = new Todo(req.body);
-        console.log(req.body)
+
         await newTodo.save()
-        res.redirect('/todo')
+        return res.redirect('/todo')
     } catch (e) {
-        next(e)
+       return next(e)
     }
 
 })
@@ -29,7 +31,7 @@ router.post('/todo/:id/completed', async (req, res) => {
             result.done = !result.done
             return result.save()
         }).then(result => {
-            res.redirect('/todo/completed')
+            return res.redirect('/todo/completed')
         })
 
 })
