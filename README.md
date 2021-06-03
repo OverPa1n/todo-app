@@ -18,6 +18,14 @@ your ***terminal*** a command:
 > npm start
 
 -----
+### all available GET routes
 
+- localhost:3000/todo
+- localhost:3000/todo/:id
+- localhost:3000/todo/:id/edit
+- localhost:3000/todo/new
+- localhost:3000/todo/completed
+
+-----
 My app is listened to on [localhost:3000/todo](http://localhost:3000/todo)
 please follow this route in your browser, and you will see app in action
