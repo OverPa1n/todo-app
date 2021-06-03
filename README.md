@@ -28,4 +28,4 @@ your ***terminal*** a command:
 
 -----
 
-> Everything else you will find on the buttons that say what this or that button does
+**Everything else you will find on the buttons that say what this or that button does**
