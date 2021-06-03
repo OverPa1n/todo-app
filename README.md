@@ -27,5 +27,5 @@ your ***terminal*** a command:
 - localhost:3000/todo/completed
 
 -----
-My app is listened to on [localhost:3000/todo](http://localhost:3000/todo)
-please follow this route in your browser, and you will see app in action
+
+> Everything else you will find on the buttons that say what this or that button does
