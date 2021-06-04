@@ -9,7 +9,6 @@
   "keywords": [],
   "author": "OverPa1n",
   "license": "ISC",
-  // Create git ignore file and add node_modules folder there to avoid commiting it
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
