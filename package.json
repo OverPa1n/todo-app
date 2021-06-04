@@ -1,4 +1,5 @@
 // Please add .idea and node_modules to gitignore file https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+// .gitignore has been successfully added in master branch
 {
   "name": "MyToDo-app",
   "version": "1.0.0",
