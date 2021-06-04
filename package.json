@@ -1,3 +1,4 @@
+// Please add .idea and node_modules to gitignore file https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 {
   "name": "MyToDo-app",
   "version": "1.0.0",
@@ -9,7 +10,6 @@
   "keywords": [],
   "author": "OverPa1n",
   "license": "ISC",
-  // Create git ignore file and add node_modules folder there to avoid commiting it
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
