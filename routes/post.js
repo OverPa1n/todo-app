@@ -2,23 +2,20 @@ const router = require('express').Router();
 const Todo = require('../models/Todo');
 const JoiSchema = require('../validators/JoiSchema')
 
-const categories = ['important', 'unimportant'];
 
-router.post('/todo', async (req, res,next) => {
-    try{
-    const {err} = JoiSchema(req.body)
-
-    if (err) {
-        console.log(err)
-        return res.render('error',{err})
-    }
+router.post('/todo', async (req, res, next) => {
+    try {
+        const {err} = JoiSchema(req.body)
+        if (err) {
+            console.log(err)
+            return res.render('error', {err})
+        }
 
         const newTodo = new Todo(req.body);
-
         await newTodo.save()
         return res.redirect('/todo')
     } catch (e) {
-       return next(e)
+        return next(e)
     }
 
 })
